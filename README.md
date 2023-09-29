@@ -1,2 +1,3 @@
-# sui-validator
-How to become
+"🖥️" deligator
+# sui-deligator
+vote "function" for props;
