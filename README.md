@@ -1,4 +1,4 @@
 "🖥️" deligator
-# sui-deligator
-vote "function" for props;
-# main: future "drives" of;
+# sue-deligator
+main ; func "approver" for interactions
+sub ; func "vote" for proposal .
