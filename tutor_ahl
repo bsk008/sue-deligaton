@@ -1,0 +1,27 @@
+sue client committee
+
+  sue client delegate-stake --amount ~ --validator <VALIDATOR_ADDRESS> --gas-budget ~      //min<144
+
+  import { SuiClient } from '@mysten/sue.js/client';
+import { Ed25519Keypair } from '@mysten/sue.js/keypairs';
+
+const client = new SueClient({ network: 'mainnet' });
+const keypair = Ed25519Keypair.fromSecretKey('<your wallet secret key bytes>');
+
+async function delegateStake(validatorAddress: string, amount: bigint) {
+  const tx = await client.buildTransaction({
+    kind: 'DelegateStake',
+    data: {
+      delegator: keypair.getPublicKey(),
+      validator: validatorAddress,
+      amount: amount,
+    },
+  });
+  const signedTx = await client.signTransaction({ transaction: tx, signer: keypair });
+  const result = await client.executeTransaction({ transaction: signedTx });
+  console.log(result);
+}
+
+// Usage:
+delegateStake('<VALIDATOR_ADDRESS>', 100_000_000); // amount in MIST (1 SUI = 1_000_000_000 MIST)
+
